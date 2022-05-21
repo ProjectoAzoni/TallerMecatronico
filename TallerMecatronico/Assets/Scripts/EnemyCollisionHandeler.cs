@@ -76,64 +76,34 @@ public class EnemyCollisionHandeler : MonoBehaviour
     public void TakeDamage(int dmg){
         myHealth.RestHealth(dmg);
     }
+    public void TakeDamageBullet(string bullet, int damage){
+        if(gameObject.tag == "E0" && bullet == "B00")
+        {
+            TakeDamage(damage);
+        } else if (gameObject.tag == "E0" && bullet == "B01")
+        {
+            TakeDamage(damage+5);
+        } else if (gameObject.tag == "E1" && bullet == "B00")
+        {
+            TakeDamage(damage - 5);
+        }
+        else if (gameObject.tag == "E1" && bullet == "B01")
+        {
+            TakeDamage(damage - 5);
+        }
+        else if (gameObject.tag == "E1" && bullet == "B10")
+        {
+            TakeDamage(damage);
+        }
+        else if (gameObject.tag == "E1" && bullet == "B11")
+        {
+            TakeDamage(damage + 5);
+        }
+    }
 //Check if i have collided with something
     void OnCollisionEnter(Collision collision)
     {
-        CheckBullet(collision);
+        
     }
 
-// Check what type of bullet has collided with me and what to do with each type
-    public void CheckBullet(Collision col)
-    {
-        //Take Damage when a player bullet hit me
-        switch(col.gameObject.tag)
-        {
-            case "B00":
-                TakeDamage(45);
-                return;
-            case "B01":
-                TakeDamage(45);
-                return;
-            case "B02":
-                TakeDamage(45);
-                return;
-            case "B03":
-                TakeDamage(45);
-                return;
-            case "B04":
-                TakeDamage(45);
-                return;
-            case "B05":
-                TakeDamage(45);
-                return;
-            case "B06":
-                TakeDamage(45);
-                return;
-        }
-        //Do something when my bullet hit me
-        switch(col.gameObject.tag)
-        {
-            case "B10":
-
-                return;
-            case "B11":
-                
-                return;
-            case "B12":
-                
-                return;
-            case "B13":
-                
-                return;
-            case "B14":
-                
-                return;
-            case "B15":
-                
-                return;
-            case "B16":
-                
-                return;
-        }
-    }
 }

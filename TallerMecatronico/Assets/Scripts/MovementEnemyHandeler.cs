@@ -10,7 +10,7 @@ public class MovementEnemyHandeler : MonoBehaviour
     [SerializeField] int followRange, notFollowRange;
     GameObject currentFollowTarget;
     int wayPointIndex;
-    [SerializeField]bool isFollowing = false;
+    //[SerializeField]bool isFollowing = false;
     Vector3 patrolTarget;
     void Start()
     {    
@@ -41,12 +41,12 @@ public class MovementEnemyHandeler : MonoBehaviour
 
         if (dist < followRange)
         { 
-            isFollowing = true;
+            //isFollowing = true;
             currentFollowTarget = player;            
         }
         else if (dist > notFollowRange) 
         { 
-            isFollowing = false;
+            //isFollowing = false;
             currentFollowTarget = null;
         }
 
@@ -56,7 +56,7 @@ public class MovementEnemyHandeler : MonoBehaviour
 
         UpdateDestination();
 
-        if (Vector3.Distance(transform.position, patrolTarget) <= 1.5f) {
+        if (Vector3.Distance(transform.position, patrolTarget) <= 2f) {
 
                 IterateWPIndex();              
         } 
