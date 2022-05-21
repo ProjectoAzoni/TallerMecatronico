@@ -9,8 +9,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] GameObject [] enemys, miniBoss;
     [SerializeField] GameObject boss;
+    [SerializeField] BasicSaveManager bsm;
     int enemycount = 0, miniBossCount = 0, stars = 0;
-    public float score = 0;
+    float score = 0;
     float maxScore = 500;
     
     bool bossDied = false;
@@ -91,6 +92,7 @@ public class ScoreManager : MonoBehaviour
             stars ++;
             score = Mathf.Round(score + maxScore/3f);
         }
+        bsm.SetLevelData(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex, stars);
         ShowScore();
     }
     public void ShowScore(){

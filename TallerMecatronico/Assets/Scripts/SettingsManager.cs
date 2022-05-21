@@ -9,6 +9,7 @@ public class SettingsManager : MonoBehaviour
     // Get the objects and scripst form the editor
     [SerializeField] AudioMixer mainVolume;
     [SerializeField] BasicSaveManager bsm;
+    [SerializeField] Dropdown qualityDrop;
     [SerializeField] Slider GeneralSlider, MusicSlider, efxSlider;
     // this one is public because it is accessed from other script 
     public string[] volumeParameter = { "GeneralVolume", "MusicVolume", "efxVolume" };
@@ -19,7 +20,7 @@ public class SettingsManager : MonoBehaviour
         for (int i=0; i < volumeParameter.Length; i++) {
             SetSliderValue(bsm.GetVolumeData(volumeParameter[i]), volumeParameter[i]);           
         }
-        SetQuality(0);
+        SetQuality(QualitySettings.GetQualityLevel());
     }
     
     //Set and save the value of the Main volume and slider when it changes
@@ -56,6 +57,7 @@ public class SettingsManager : MonoBehaviour
     }
     //set the quality with a dropdown box
     public void SetQuality(int quality) {
+        qualityDrop.value = quality;
         QualitySettings.SetQualityLevel(quality);
     }
 }
