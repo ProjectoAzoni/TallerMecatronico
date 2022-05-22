@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = score.ToString();
+        
     }
     public void CheckEnemys()
     {
@@ -95,11 +95,11 @@ public class ScoreManager : MonoBehaviour
             stars ++;
             score = Mathf.Round(score + maxScore/3f);
         }
-        bsm.SetLevelData(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex, stars);
         ShowScore();
     }
 
     public void ShowScore(){
+        scoreText.text = score.ToString();
         switch(stars){
             case 1:
                 imageStars[0].color = new Color(0,255,90,255);
@@ -130,6 +130,12 @@ public class ScoreManager : MonoBehaviour
                 starsBg[2].color = new Color(0,255,90,255);
                 return;
         }
+    }
+
+    public void SaveLevelData(){
+        bsm.SetLevelData(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex, stars);
+        int sc = Mathf.RoundToInt(score) + bsm.GetPointsData();
+        bsm.SetPointsData(sc);
     }
 
     

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class MiniGameScore : MonoBehaviour
 {
      [SerializeField] Image [] imageStars;
     [SerializeField] Image [] starsBg;
+    [SerializeField] BasicSaveManager bsm;
     [SerializeField] MniGame mg;
     [SerializeField] Text scoreText, menuScoreText;
     [SerializeField] Text total, restantes;
@@ -108,4 +110,21 @@ public class MiniGameScore : MonoBehaviour
                 return;
         }
     }
+    public void SaveScore(){
+        int myScore = 0;
+        try{
+        myScore = bsm.GetPointsData();
+        myScore = myScore + currentScore;
+        bsm.SetPointsData(myScore);
+        }
+        catch(Exception e)
+        {
+            Debug.Log("nope\t"+ e);
+        }  
+    }
+    public void SaveStars()
+    {
+        bsm.SetMiniGameData(0, stars);
+    }
+    
 }

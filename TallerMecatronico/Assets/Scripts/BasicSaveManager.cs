@@ -17,6 +17,18 @@ public class BasicSaveManager : MonoBehaviour
                 //The higest score is already saved
             }
     }
+    public void SetMiniGameData(int miniGame, int numEstrellas) {
+            // if the higest score is less than the new score
+            if (GetLevelData(miniGame) < numEstrellas)
+            {
+                //Save the new score in the level
+                PlayerPrefs.SetInt("MG" + miniGame, numEstrellas);
+            }
+            else
+            {
+                //The higest score is already saved
+            }
+    }
     //Save the volume value of the MainVolume/MusicVolume/EffectsVolume
     public void SetVolumeData(string volumeParameter, float value) {
         PlayerPrefs.SetFloat(volumeParameter, value);
@@ -47,5 +59,13 @@ public class BasicSaveManager : MonoBehaviour
     public int GetPointsData()
     {
         return PlayerPrefs.GetInt("Points");
+    }
+    public int GetMiniGameData(int miniGame)
+    {
+        return PlayerPrefs.GetInt("MG"+miniGame);
+    }
+    public string GetPointsDataString()
+    {
+        return PlayerPrefs.GetInt("Points").ToString();
     }
 }
