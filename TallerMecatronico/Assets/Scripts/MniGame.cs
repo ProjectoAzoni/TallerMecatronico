@@ -141,14 +141,12 @@ public class MniGame : MonoBehaviour
             }
             else {
                 print(colors[color]);
-
             }               
         }
     }
     public void MoveItems(){
         if (itemcount < maxItemcount) {
             itemcount++;
-            print(itemcount);
             itemsBox.transform.position = new Vector3 (itemsBox.transform.position.x - itemSelecPoint.transform.position.x - 40,itemsBox.transform.position.y,itemsBox.transform.position.z);
         }else {
             itemcount = 0;

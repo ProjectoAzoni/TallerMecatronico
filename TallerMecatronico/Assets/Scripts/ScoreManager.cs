@@ -29,30 +29,33 @@ public class ScoreManager : MonoBehaviour
     }
     public void CheckEnemys()
     {
-        int counter = 0;
-        int counter1 = 0;
-        for (int i = 0; i < enemys.Length; i++)
-        {            
-            if(!enemys[i].activeInHierarchy){        
-                counter++;        
+        if(enemys != null || miniBoss != null || boss != null){
+            int counter = 0;
+            int counter1 = 0;
+            for (int i = 0; i < enemys.Length; i++)
+            {            
+                if(!enemys[i].activeInHierarchy){        
+                    counter++;        
+                }
             }
-        }
-        enemycount = counter;
-        for (int i = 0; i< miniBoss.Length; i++)
-        {
-            if(!miniBoss[i].activeInHierarchy)
+            enemycount = counter;
+            for (int i = 0; i< miniBoss.Length; i++)
             {
-                counter1++;
+                if(!miniBoss[i].activeInHierarchy)
+                {
+                    counter1++;
+                }
             }
+            miniBossCount = counter1;
+            if (!boss.activeInHierarchy){
+                bossDied = true;
+            }
+            else {
+                bossDied = false;
+            }
+            CalcScore();
         }
-        miniBossCount = counter1;
-        if (!boss.activeInHierarchy){
-            bossDied = true;
-        }
-        else {
-            bossDied = false;
-        }
-        CalcScore();
+        
     }
 
     public void CalcScore()
@@ -95,6 +98,7 @@ public class ScoreManager : MonoBehaviour
         bsm.SetLevelData(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex, stars);
         ShowScore();
     }
+
     public void ShowScore(){
         switch(stars){
             case 1:
@@ -128,4 +132,5 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    
 }
