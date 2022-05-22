@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MniGame : MonoBehaviour
 {
+    [SerializeField] Sprite [] whiteIcons, greenIcons, blackIcons;
     [SerializeField] public GameObject itemsBox, itemSelecPoint;
     [SerializeField] Slider slider;
     [SerializeField] Transform shootPoint, shootOrigin, azoni;
@@ -105,23 +106,49 @@ public class MniGame : MonoBehaviour
     public void ItemsBoxColor()
     {
         foreach(Transform item in itemsBox.transform){
-            if (1 == colors[Random.Range(1,colors.Length)]){
-                Color imgColor = new Color32(255,255,255,255);
+            int color = Random.Range(-1,3);
+            
+            if (color < 0)
+            { 
+                color = 0;
+            }
+
+            if (color > 2)
+            { 
+                color = 2;
+            }
+             
+            if (1 == colors[color]){
+                Color imgColor = new Color32(255,255,255,1); //White Bin
+                Sprite imgSprite = whiteIcons[Random.Range(0,whiteIcons.Length-1)];
+                item.GetChild(0).gameObject.GetComponent<Image>().sprite = imgSprite;
+                //item.gameObject.GetComponent<Image>().sprite = imgSprite;
                 item.gameObject.GetComponent<Image>().color = imgColor;
             }else
-            if (2 == colors[Random.Range(1,colors.Length)]){
-                Color imgColor = new Color32(0,212,0,255);
+            if (2 == colors[color]){
+                Color imgColor = new Color32(0,212,0,1);  //Green Bin
+                Sprite imgSprite = greenIcons[Random.Range(0,greenIcons.Length-1)];
+                item.GetChild(0).gameObject.GetComponent<Image>().sprite = imgSprite;
+                //item.gameObject.GetComponent<Image>().sprite = imgSprite;
                 item.gameObject.GetComponent<Image>().color = imgColor;
             }else
-            if (3 == colors[Random.Range(1,colors.Length)]){
-                Color imgColor = new Color32(0,0,0,255);
+            if (3 == colors[color]){
+                Color imgColor = new Color32(0,0,0,1);    //Black Bin
+                Sprite imgSprite = blackIcons[Random.Range(0,blackIcons.Length-1)];
+                item.GetChild(0).gameObject.GetComponent<Image>().sprite = imgSprite;
+                //item.gameObject.GetComponent<Image>().sprite = imgSprite;
                 item.gameObject.GetComponent<Image>().color = imgColor;
+            }
+            else {
+                print(colors[color]);
+
             }               
         }
     }
     public void MoveItems(){
         if (itemcount < maxItemcount) {
             itemcount++;
+            print(itemcount);
             itemsBox.transform.position = new Vector3 (itemsBox.transform.position.x - itemSelecPoint.transform.position.x - 40,itemsBox.transform.position.y,itemsBox.transform.position.z);
         }else {
             itemcount = 0;
