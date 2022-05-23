@@ -7,6 +7,7 @@ public class MainMenuHistory : MonoBehaviour
 {
     [SerializeField] PlayableDirector director;
     [SerializeField] GameObject HistoryPanel;
+    [SerializeField] BasicSaveManager bsm;
 
     // Start is called before the first frame update
     void Awake(){
@@ -14,8 +15,9 @@ public class MainMenuHistory : MonoBehaviour
     }
     void Start()
     {
-        if(!HistoryPanel.gameObject.activeSelf && director.state == PlayState.Paused){
+        if(!HistoryPanel.gameObject.activeSelf && director.state == PlayState.Paused && bsm.GetHistorySate() == 1){
             director.Play();
+            bsm.SetStartHistory();
         }
     }
 
@@ -24,6 +26,7 @@ public class MainMenuHistory : MonoBehaviour
     {
         if(HistoryPanel.gameObject.activeInHierarchy && director.state == PlayState.Paused){
             director.Stop();
+            bsm.SetStopHistory();
             HistoryPanel.SetActive(false);
         }
     }

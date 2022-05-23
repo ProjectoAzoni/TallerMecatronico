@@ -10,6 +10,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] AudioMixer mainVolume;
     [SerializeField] BasicSaveManager bsm;
     [SerializeField] Dropdown qualityDrop;
+    [SerializeField] Toggle history;
     [SerializeField] Slider GeneralSlider, MusicSlider, efxSlider;
     // this one is public because it is accessed from other script 
     public string[] volumeParameter = { "GeneralVolume", "MusicVolume", "efxVolume" };
@@ -17,6 +18,11 @@ public class SettingsManager : MonoBehaviour
     //when the game launch, set the volume sliders to the saved value 
     private void Awake()
     {
+        if(bsm.GetHistorySate() == 1){
+            history.isOn = true;
+        }else if (bsm.GetHistorySate() == 0){
+            history.isOn = false;
+        }
         for (int i=0; i < volumeParameter.Length; i++) {
             SetSliderValue(bsm.GetVolumeData(volumeParameter[i]), volumeParameter[i]);           
         }
@@ -59,5 +65,13 @@ public class SettingsManager : MonoBehaviour
     public void SetQuality(int quality) {
         qualityDrop.value = quality;
         QualitySettings.SetQualityLevel(quality);
+    }
+
+    public void SetHistory(bool ison){
+        if (ison){
+            bsm.SetStartHistory();
+        }else {
+            bsm.SetStopHistory();
+        }
     }
 }

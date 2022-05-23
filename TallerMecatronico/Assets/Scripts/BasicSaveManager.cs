@@ -68,4 +68,15 @@ public class BasicSaveManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt("Points").ToString();
     }
+
+    public void SetStartHistory(){
+        PlayerPrefs.SetInt("History", 1);
+    }
+    public void SetStopHistory(){
+        PlayerPrefs.SetInt("History", 0);
+    }
+
+    public int GetHistorySate(){
+        return PlayerPrefs.GetInt("History");
+    }
 }
