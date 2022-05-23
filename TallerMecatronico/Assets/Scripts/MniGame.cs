@@ -147,7 +147,8 @@ public class MniGame : MonoBehaviour
     public void MoveItems(){
         if (itemcount < maxItemcount) {
             itemcount++;
-            itemsBox.transform.position = new Vector3 (itemsBox.transform.position.x - itemSelecPoint.transform.position.x - 40,itemsBox.transform.position.y,itemsBox.transform.position.z);
+            RectTransform itemBoxRect= itemsBox.GetComponent<RectTransform>(); 
+            itemBoxRect.localPosition = new Vector3(itemBoxRect.localPosition.x - 200, itemBoxRect.localPosition.y, itemBoxRect.localPosition.z);
         }else {
             itemcount = 0;
         }
