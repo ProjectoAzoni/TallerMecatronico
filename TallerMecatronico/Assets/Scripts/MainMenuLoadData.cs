@@ -20,7 +20,6 @@ public class MainMenuLoadData : MonoBehaviour
         scoreText.text = bsm.GetPointsData().ToString();
         levels = bsm.GetLevelData(1);
         MiniGames = bsm.GetMiniGameData(0);
-        print(MiniGames);
         ShowPoints();
         ShowStars();
         
