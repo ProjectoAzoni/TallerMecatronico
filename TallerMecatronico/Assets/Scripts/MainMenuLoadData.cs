@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,37 +20,16 @@ public class MainMenuLoadData : MonoBehaviour
         scoreText.text = bsm.GetPointsData().ToString();
         levels = bsm.GetLevelData(1);
         MiniGames = bsm.GetMiniGameData(0);
+        print(MiniGames);
+        ShowPoints();
+        ShowStars();
+        
+        
 
-        switch(levels){
-            case 1:
-                imageStarsLvL[0].color = new Color(0,255,90,255);
-                imageStarsLvL[1].color = new Color(255,255,255,255);
-                imageStarsLvL[2].color = new Color(255,255,255,255);
+    }
 
-                starsBgLvl[0].color = new Color(0,255,90,255);
-                starsBgLvl[1].color = new Color(255,255,255,255);
-                starsBgLvl[2].color = new Color(255,255,255,255);
-
-                return;
-            case 2:
-                imageStarsLvL[0].color = new Color(0,255,90,255);
-                imageStarsLvL[1].color = new Color(0,255,90,255);
-                imageStarsLvL[2].color = new Color(255,255,255,255);
-
-                starsBgLvl[0].color = new Color(0,255,90,255);
-                starsBgLvl[1].color = new Color(0,255,90,255);
-                starsBgLvl[2].color = new Color(255,255,255,255);
-                return;
-            case 3:
-                imageStarsLvL[0].color = new Color(0,255,90,255);
-                imageStarsLvL[1].color = new Color(0,255,90,255);
-                imageStarsLvL[2].color = new Color(0,255,90,255);
-
-                starsBgLvl[0].color = new Color(0,255,90,255);
-                starsBgLvl[1].color = new Color(0,255,90,255);
-                starsBgLvl[2].color = new Color(0,255,90,255);
-                return;
-        }
+    private void ShowStars()
+    {
         switch(MiniGames){
             case 1:
                 imageStarsMG[0].color = new Color(0,255,90,255);
@@ -80,7 +60,40 @@ public class MainMenuLoadData : MonoBehaviour
                 starsBgMG[2].color = new Color(0,255,90,255);
                 return;
         }
+    }
 
+    private void ShowPoints()
+    {
+        switch(levels){
+            case 1:
+                imageStarsLvL[0].color = new Color(0,255,90,255);
+                imageStarsLvL[1].color = new Color(255,255,255,255);
+                imageStarsLvL[2].color = new Color(255,255,255,255);
+
+                starsBgLvl[0].color = new Color(0,255,90,255);
+                starsBgLvl[1].color = new Color(255,255,255,255);
+                starsBgLvl[2].color = new Color(255,255,255,255);
+
+                return;
+            case 2:
+                imageStarsLvL[0].color = new Color(0,255,90,255);
+                imageStarsLvL[1].color = new Color(0,255,90,255);
+                imageStarsLvL[2].color = new Color(255,255,255,255);
+
+                starsBgLvl[0].color = new Color(0,255,90,255);
+                starsBgLvl[1].color = new Color(0,255,90,255);
+                starsBgLvl[2].color = new Color(255,255,255,255);
+                return;
+            case 3:
+                imageStarsLvL[0].color = new Color(0,255,90,255);
+                imageStarsLvL[1].color = new Color(0,255,90,255);
+                imageStarsLvL[2].color = new Color(0,255,90,255);
+
+                starsBgLvl[0].color = new Color(0,255,90,255);
+                starsBgLvl[1].color = new Color(0,255,90,255);
+                starsBgLvl[2].color = new Color(0,255,90,255);
+                return;
+        }
     }
 
     // Update is called once per frame

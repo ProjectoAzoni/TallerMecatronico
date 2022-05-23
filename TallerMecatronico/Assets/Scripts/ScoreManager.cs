@@ -71,18 +71,19 @@ public class ScoreManager : MonoBehaviour
             score =Mathf.Round(score + maxScore/3.5f);
         }
 
-        stars = 0;
         
         if (enemycount == enemys.Length && ecount)
         {
             ecount = false;
             stars++;
+            print(stars);
             score = score + Mathf.Round(maxScore/3f);
         }
         if (miniBossCount == miniBoss.Length && mbcount)
         {
             mbcount = false;
             stars++;
+            print(stars);
             score = Mathf.Round(score + maxScore/3f);
         } 
         else if (miniBossCount <= (miniBoss.Length)/2 && miniBossCount > (miniBoss.Length)/3 && c3)
@@ -93,6 +94,7 @@ public class ScoreManager : MonoBehaviour
         if (bossDied && c4){
             c4 = false;
             stars ++;
+            print(stars);
             score = Mathf.Round(score + maxScore/3f);
         }
         ShowScore();
