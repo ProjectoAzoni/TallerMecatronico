@@ -1,4 +1,0 @@
-#Mon May 23 17:36:06 COT 2022
-base.0=D\:\\Documentos\\GitHub\\TallerMecatronico\\TallerMecatronico\\Temp\\gradleOut\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
