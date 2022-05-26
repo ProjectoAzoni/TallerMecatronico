@@ -48,13 +48,13 @@ public class EnemyCollisionHandeler : MonoBehaviour
                     pch.TakeDamage(10);
                     return;
                 case "E2":
-                    pch.TakeDamage(15);
-                    return;
-                case "E3":
                     pch.TakeDamage(20);
                     return;
+                case "E3":
+                    pch.TakeDamage(8);
+                    return;
                 case "E4":
-                    pch.TakeDamage(25);
+                    pch.TakeDamage(30);
                     return;
                 case "E5":
                     pch.TakeDamage(30);
@@ -99,6 +99,58 @@ public class EnemyCollisionHandeler : MonoBehaviour
         {
             TakeDamage(damage + 5);
         }
+
+         else if (gameObject.tag == "E2" && bullet == "B00")
+        {
+            TakeDamage(damage);
+        }
+        else if (gameObject.tag == "E2" && bullet == "B01")
+        {
+            TakeDamage(damage - 5);
+        }
+        else if (gameObject.tag == "E2" && bullet == "B10")
+        {
+            TakeDamage(damage- 10);
+        }
+        else if (gameObject.tag == "E2" && bullet == "B11")
+        {
+            TakeDamage(damage);
+        }
+
+        else if (gameObject.tag == "E3" && bullet == "B00")
+        {
+            TakeDamage(damage + 5);
+        }
+        else if (gameObject.tag == "E3" && bullet == "B01")
+        {
+            TakeDamage(damage + 10);
+        }
+        else if (gameObject.tag == "E3" && bullet == "B10")
+        {
+            TakeDamage(damage - 10);
+        }
+        else if (gameObject.tag == "E3" && bullet == "B11")
+        {
+            TakeDamage(damage - 15);
+        }
+
+        else if (gameObject.tag == "E4" && bullet == "B00")
+        {
+            TakeDamage(5);
+        }
+        else if (gameObject.tag == "E4" && bullet == "B01")
+        {
+            TakeDamage(5);
+        }
+        else if (gameObject.tag == "E4" && bullet == "B10")
+        {
+            TakeDamage(5);
+        }
+        else if (gameObject.tag == "E4" && bullet == "B11")
+        {
+            TakeDamage(5);
+        }
+        
     }
 //Check if i have collided with something
     void OnCollisionEnter(Collision collision)
