@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	private float speed = 5f;
+	public float speed = 5f;
 	float shootTimer = 0.2f;
 
 	private Rigidbody rb;
