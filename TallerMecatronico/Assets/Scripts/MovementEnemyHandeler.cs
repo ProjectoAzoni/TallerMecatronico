@@ -56,7 +56,7 @@ public class MovementEnemyHandeler : MonoBehaviour
 
         UpdateDestination();
 
-        if (Vector3.Distance(transform.position, patrolTarget) <= 2f) {
+        if (Vector3.Distance(transform.position, patrolTarget) <= 10f) {
 
                 IterateWPIndex();              
         } 

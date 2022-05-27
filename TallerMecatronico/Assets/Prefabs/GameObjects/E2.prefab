@@ -371,8 +371,8 @@ MonoBehaviour:
   nmagent: {fileID: 3998818996486002828}
   wayPoints: []
   player: {fileID: 0}
-  followRange: 10
-  notFollowRange: 12
+  followRange: 30
+  notFollowRange: 32
 --- !u!195 &3998818996486002828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

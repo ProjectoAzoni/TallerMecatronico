@@ -104,7 +104,7 @@
 59-->D:\Documentos\GitHub\TallerMecatronico\TallerMecatronico\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:5-101
 60            android:name="unity.build-id"
 60-->D:\Documentos\GitHub\TallerMecatronico\TallerMecatronico\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:16-45
-61            android:value="8bed333c-9f79-43d4-a238-da544aeb13d3" />
+61            android:value="a323ebc8-9525-4b70-99d9-85abd7a302f0" />
 61-->D:\Documentos\GitHub\TallerMecatronico\TallerMecatronico\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:46-98
 62    </application>
 63
