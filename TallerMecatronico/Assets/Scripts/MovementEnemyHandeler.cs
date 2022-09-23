@@ -21,7 +21,10 @@ public class MovementEnemyHandeler : MonoBehaviour
     }
     void Update()
     {
-        MoveEnemy();     
+        if(Time.timeScale == 1){
+            MoveEnemy();
+        }
+        
     }
     void MoveEnemy() {
 
