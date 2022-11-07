@@ -18,33 +18,30 @@ public class SettingsManager : MonoBehaviour
     //when the game launch, set the volume sliders to the saved value 
     private void Awake()
     {
-        if(bsm.GetHistorySate() == 1){
-            history.isOn = true;
-        }else if (bsm.GetHistorySate() == 0){
-            history.isOn = false;
-        }
-        for (int i=0; i < volumeParameter.Length; i++) {
-            SetSliderValue(bsm.GetVolumeData(volumeParameter[i]), volumeParameter[i]);           
-        }
-        SetQuality(QualitySettings.GetQualityLevel());
+        SetStartData();
     }
     
     //Set and save the value of the Main volume and slider when it changes
     public void SetGeneralVolume(float volume) {
-        mainVolume.SetFloat(volumeParameter[0], volume);
-        bsm.SetVolumeData(volumeParameter[0], volume);
+        float num = Mathf.Log10(volume) * 20;
+        mainVolume.SetFloat(volumeParameter[0], num);
+        bsm.SetVolumeData(volumeParameter[0], num);
     }
 
     //Set and save the value of the effects volume and slider when it changes
     public void SetEffectsVolume(float volume)
     {
-        bsm.SetVolumeData(volumeParameter[2], volume);
+        float num = Mathf.Log10(volume) * 20;
+        mainVolume.SetFloat(volumeParameter[2], num);
+        bsm.SetVolumeData(volumeParameter[2], num);
     }
 
     //Set and save the value of the Music voulme and slider when it changes
     public void SetMusiclVolume(float volume)
     {
-        bsm.SetVolumeData(volumeParameter[1], volume);
+        float num = Mathf.Log10(volume) * 20;
+        mainVolume.SetFloat(volumeParameter[1],num);
+        bsm.SetVolumeData(volumeParameter[1], num);
     }
 
     //set the value of the 3 slaiders when nedded
@@ -85,5 +82,18 @@ public class SettingsManager : MonoBehaviour
     }
     public void DefaultStart(){
         Time.timeScale=1;
+    }
+
+    public void SetStartData(){
+        if(bsm.GetHistorySate() == 1){
+            history.isOn = true;
+        }else if (bsm.GetHistorySate() == 0){
+            history.isOn = false;
+        }
+        for (int i=0; i < volumeParameter.Length; i++) {
+            SetSliderValue(Mathf.Pow(10f,(bsm.GetVolumeData(volumeParameter[i]))/(20f)), volumeParameter[i]);
+           
+        }
+        SetQuality(QualitySettings.GetQualityLevel());
     }
 }

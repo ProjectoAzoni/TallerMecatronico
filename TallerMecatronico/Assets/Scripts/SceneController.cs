@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] BasicSaveManager bsm;
     [SerializeField] SettingsManager sm;
 
+    
     //go to an scene by its name
     public void GoToScene(string scene) {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
@@ -26,14 +27,6 @@ public class SceneController : MonoBehaviour
     public void GoToSceneAs(int scene) {
         //call the IEnumerator function
         StartCoroutine(LoadAsynchronously(scene));
-        //set the saved volume in the 3 volume sliders
-        string[] volumeParameter = sm.volumeParameter;
-        for (int i = 0; i < volumeParameter.Length; i++)
-        {
-            sm.SetSliderValue(bsm.GetVolumeData(volumeParameter[i]), volumeParameter[i]);
-
-        }
-        
     }
 
     //Reload the current scene
@@ -52,14 +45,21 @@ public class SceneController : MonoBehaviour
     //Load the next scene whlie in loading screen
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
+        //set the saved volume in the 3 volume sliders
+        string[] volumeParameter = sm.volumeParameter;
+        for (int i = 0; i < volumeParameter.Length; i++)
+        {
+            sm.SetSliderValue(Mathf.Pow(10,bsm.GetVolumeData(volumeParameter[i])/20), volumeParameter[i]);
+        }
         //Start the CrossFade_Start animation with the "Start" trigger
         transition.SetTrigger("Start");
         //Wait for 1 second for the animation to end
         yield return new WaitForSeconds(1);
-        //load all the content of the new scene witout going to the scene
-        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneIndex);
         //set the loading screen active in the hierarchy 
         sceneLoader.SetActive(true);
+        //load all the content of the new scene witout going to the scene
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneIndex);
+        
 
         // while the scene is not done loading
         while (!op.isDone)

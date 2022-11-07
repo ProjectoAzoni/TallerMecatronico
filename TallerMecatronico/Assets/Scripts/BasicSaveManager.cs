@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicSaveManager : MonoBehaviour
 {
+
     //set the stars per level
     public void SetLevelData(int level, int numEstrellas) {
             // if the higest score is less than the new score
@@ -31,7 +32,7 @@ public class BasicSaveManager : MonoBehaviour
     }
     //Save the volume value of the MainVolume/MusicVolume/EffectsVolume
     public void SetVolumeData(string volumeParameter, float value) {
-        PlayerPrefs.SetFloat(volumeParameter, value);
+        PlayerPrefs.SetFloat(volumeParameter, value *1.0f);
     }
 
 
@@ -49,6 +50,7 @@ public class BasicSaveManager : MonoBehaviour
     }
     //Delete the info of all levels
     public void DeleteAllLevelData() {
+        print("all delete");
         PlayerPrefs.DeleteAll();
     }
     //Save the points gained
