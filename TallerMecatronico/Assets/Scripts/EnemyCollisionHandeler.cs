@@ -37,21 +37,21 @@ public class EnemyCollisionHandeler : MonoBehaviour
     public void IsStopped(float dis)
     {         
         // check if enemy is moving
-        if (dis <= agent.stoppingDistance)
+        if (dis <= agent.stoppingDistance && gameObject.activeInHierarchy)
         {
             // Have the player take damage acording to the type of enemy
             switch(gameObject.tag){
-                case "E0":
+                case "E0": // Tutorial Enemy
                     pch.TakeDamage(5);
                     return;
-                case "E1":
-                    pch.TakeDamage(10);
-                    return;
-                case "E2":
+                case "E1": // Straw Enemy
                     pch.TakeDamage(20);
                     return;
-                case "E3":
-                    pch.TakeDamage(8);
+                case "E2": // Cloud bottle enemy
+                    pch.TakeDamage(40);
+                    return;
+                case "E3": // box thing enemy
+                    pch.TakeDamage(10);
                     return;
                 case "E4":
                     pch.TakeDamage(30);

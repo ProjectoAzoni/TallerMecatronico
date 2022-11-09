@@ -28,7 +28,10 @@ public class SceneController : MonoBehaviour
         //call the IEnumerator function
         StartCoroutine(LoadAsynchronously(scene));
     }
-
+    public void GoToSceneAs(string scene) {
+        //call the IEnumerator function
+        StartCoroutine(LoadAsynchronously(scene));
+    }
     //Reload the current scene
     public void ReloadCurrentScene() {
         //Get the current active scene
@@ -42,8 +45,66 @@ public class SceneController : MonoBehaviour
         
          
     }
+
+    public string GetCurrentSceneName(){
+        return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+    }
+
+    public void GoToSceneAsSave(int scene, int score){
+        int sc = Mathf.RoundToInt(score) + bsm.GetPointsData();
+        bsm.SetPointsData(sc);
+        StartCoroutine(LoadAsynchronously(scene));
+    }
+
+    public void GoToSceneAsSave(string scene, int score){
+        int sc = Mathf.RoundToInt(score) + bsm.GetPointsData();
+        bsm.SetPointsData(sc);
+        StartCoroutine(LoadAsynchronously(scene));
+    }
+
+    public void GoToSceneAsSave(int scene, int score, int stars){
+        bsm.SetLevelData(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex, stars);
+        int sc = Mathf.RoundToInt(score) + bsm.GetPointsData();
+        bsm.SetPointsData(sc);
+        StartCoroutine(LoadAsynchronously(scene));
+    }
+    
+    public void GoToSceneAsSave(string scene, int score, int stars){
+        bsm.SetLevelData(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex, stars);
+        int sc = Mathf.RoundToInt(score) + bsm.GetPointsData();
+        bsm.SetPointsData(sc);
+        StartCoroutine(LoadAsynchronously(scene));
+    }
+
     //Load the next scene whlie in loading screen
     IEnumerator LoadAsynchronously(int sceneIndex)
+    {
+        //set the saved volume in the 3 volume sliders
+        string[] volumeParameter = sm.volumeParameter;
+        for (int i = 0; i < volumeParameter.Length; i++)
+        {
+            sm.SetSliderValue(Mathf.Pow(10,bsm.GetVolumeData(volumeParameter[i])/20), volumeParameter[i]);
+        }
+        //Start the CrossFade_Start animation with the "Start" trigger
+        transition.SetTrigger("Start");
+        //Wait for 1 second for the animation to end
+        yield return new WaitForSeconds(1);
+        //set the loading screen active in the hierarchy 
+        sceneLoader.SetActive(true);
+        //load all the content of the new scene witout going to the scene
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneIndex);
+        
+
+        // while the scene is not done loading
+        while (!op.isDone)
+        {
+            // show the proces of the loading in the loading bar
+            float progress = Mathf.Clamp01(op.progress / .9f);
+            slider.value = progress;
+            yield return null;
+        }
+    }
+    IEnumerator LoadAsynchronously(string sceneIndex)
     {
         //set the saved volume in the 3 volume sliders
         string[] volumeParameter = sm.volumeParameter;

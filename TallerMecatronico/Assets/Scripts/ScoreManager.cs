@@ -4,22 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
+    [SerializeField] bool hasBoss, hasMiniBoss;
+
+    [SerializeField][Tooltip("enemy percentage to activate the gate to the defense zone")] int defensePercentaje;
+
     [SerializeField] Image [] imageStars;
     [SerializeField] Image [] starsBg;
     [SerializeField] Text scoreText;
     [SerializeField] GameObject [] enemys, miniBoss;
+
+    [SerializeField] GameObject gateDefense;
+
     [SerializeField] GameObject boss;
     [SerializeField] BasicSaveManager bsm;
-    int enemycount = 0, miniBossCount = 0, stars = 0;
-    float score = 0;
+
+    int enemycount = 0, miniBossCount = 0;
+    [HideInInspector] public int stars = 0;
+    [HideInInspector] public float score = 0;
     float maxScore = 500;
-    
+    float enemyPerc = 0f;
+
     bool bossDied = false;
     bool ecount = true, mbcount = true, c1 = true, c2 = true, c3 = true, c4 = true;
     // Start is called before the first frame update
     void Start()
     {
-        //InvokeRepeating("CheckEnemys",0,2);
+        
+        InvokeRepeating("CheckEnemys",0f,2f);
     }
 
     // Update is called once per frame
@@ -29,9 +40,36 @@ public class ScoreManager : MonoBehaviour
     }
     public void CheckEnemys()
     {
-        if(enemys != null || miniBoss != null || boss != null){
+        if (hasBoss && hasMiniBoss){
+            if(enemys != null || miniBoss != null || boss != null){
+                int counter = 0;
+                int counter1 = 0;
+                for (int i = 0; i < enemys.Length; i++)
+                {            
+                    if(!enemys[i].activeInHierarchy){        
+                        counter++;        
+                    }
+                }
+                enemycount = counter;
+                for (int i = 0; i< miniBoss.Length; i++)
+                {
+                    if(!miniBoss[i].activeInHierarchy)
+                    {
+                        counter1++;
+                    }
+                }
+                miniBossCount = counter1;
+                if (!boss.activeInHierarchy){
+                    bossDied = true;
+                }
+                else {
+                    bossDied = false;
+                }
+                CalcScore0();
+            }
+        }
+        if(!hasBoss && !hasMiniBoss){
             int counter = 0;
-            int counter1 = 0;
             for (int i = 0; i < enemys.Length; i++)
             {            
                 if(!enemys[i].activeInHierarchy){        
@@ -39,28 +77,14 @@ public class ScoreManager : MonoBehaviour
                 }
             }
             enemycount = counter;
-            for (int i = 0; i< miniBoss.Length; i++)
-            {
-                if(!miniBoss[i].activeInHierarchy)
-                {
-                    counter1++;
-                }
-            }
-            miniBossCount = counter1;
-            if (!boss.activeInHierarchy){
-                bossDied = true;
-            }
-            else {
-                bossDied = false;
-            }
-            CalcScore();
+            CalcScore1();
         }
         
     }
 
-    public void CalcScore()
+    public void CalcScore0()
     { 
-        if (enemycount <= (enemys.Length)/3 && enemycount > (enemys.Length)/4 && score < Mathf.Round(maxScore/5.5f) && c1)
+        if (enemycount <= (enemys.Length*0.3f) && enemycount > (enemys.Length*0.25f) && score < Mathf.Round(maxScore/5.5f) && c1)
         {
             c1 = false;
             score =Mathf.Round(score + maxScore/5.5f);
@@ -98,6 +122,22 @@ public class ScoreManager : MonoBehaviour
             score = Mathf.Round(score + maxScore/3f);
         }
         ShowScore();
+    }
+
+    public void CalcScore1(){
+        enemyPerc = (float)enemycount/enemys.Length;
+        score = Mathf.RoundToInt(maxScore*enemyPerc);
+        if(enemyPerc != (float)0f && enemyPerc >= (float)defensePercentaje/100f){
+            stars = 1;
+            OpenGateDefense();
+        }
+        
+        ShowScore();
+    }
+
+    public void OpenGateDefense(){
+        gateDefense.SetActive(true);
+
     }
 
     public void ShowScore(){

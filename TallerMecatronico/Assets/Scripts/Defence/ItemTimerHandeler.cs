@@ -16,6 +16,7 @@ public class ItemTimerHandeler : MonoBehaviour
 
     [Header("Time for green, white and black")]
     [SerializeField]public int [] trashTimers;
+    [SerializeField] ItemsManager im;
     
 
     // Start is called before the first frame update
@@ -28,7 +29,7 @@ public class ItemTimerHandeler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(Time.timeScale == 1.0f){
+        if(Time.timeScale == 1.0f && im.timeRemaining > 0){
             if(panelItems.Count > 0 & timers.Count > 0 & items.Count > 0){
                 for(int i = 0; i < timers.Count; i++){
                     panelItems[i].GetComponentInChildren<Slider>().value -= Time.unscaledDeltaTime;

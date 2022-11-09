@@ -25,7 +25,10 @@ public class EnemyActionHandeler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(grab && Vector3.Distance(transform.position, startPos) < 1f){
+            GetComponent<Animator>().SetTrigger("Exit");
+        }
+
         if(currentitem != null && !grab){
             transform.LookAt(new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z));
             nm.SetDestination(new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z));

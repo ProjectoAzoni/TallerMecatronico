@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] ItemTimerHandeler ith;
     [SerializeField] ItemsManager im;
     [SerializeField] public Transform enemySpawnStartPos;
-    [SerializeField] GameObject enemyDefencePrefab;
+    [SerializeField] GameObject [] enemysDefencePrefab;
     [SerializeField] Transform enemyHolderManager;
     [SerializeField] Vector3 [] spawnPos;
     [SerializeField] Vector3 [] spawnScale;
@@ -49,7 +49,9 @@ public class EnemyManager : MonoBehaviour
         {
             float num2 = UnityEngine.Random.Range(timer*0.1f, timer*0.95f);
             timeSpawn[l] = num2;
-            GameObject obj = Instantiate(enemyDefencePrefab, enemySpawnStartPos.position, Quaternion.identity, enemyHolderManager);
+
+            int num3 = UnityEngine.Random.Range(0, enemysDefencePrefab.Length-1 > 0? enemysDefencePrefab.Length : 0);
+            GameObject obj = Instantiate(enemysDefencePrefab[num3], enemySpawnStartPos.position, Quaternion.identity, enemyHolderManager);
             enemies.Add(obj);
         }
     }
@@ -59,7 +61,8 @@ public class EnemyManager : MonoBehaviour
         int num1 = UnityEngine.Random.Range(0, ith.items.Count);
         Vector3 newPos = spawnPos[numb] + new Vector3(UnityEngine.Random.Range(-spawnScale[numb].x/2,spawnScale[numb].x/2),0f,UnityEngine.Random.Range(-spawnScale[numb].z/2,spawnScale[numb].z/2));
         enemies[num].transform.position = newPos;
-        enemies[num].GetComponent<EnemyActionHandeler>().MoveEnemy(newPos, ith.items[num1], ith);        
+        enemies[num].GetComponent<EnemyActionHandeler>().MoveEnemy(newPos, ith.items[num1], ith);
+        enemies[num].GetComponent<Animator>().SetTrigger("Idle");        
         for (int g = 0; g < enemies.Count; g++)
         {
             if(enemies[g] == enemies[num]){
