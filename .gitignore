@@ -28,7 +28,7 @@ TallerMecatronico/.vs/
 
 # Visual Studio Code cache
 
-TallerMecatronico/.vscode/
+.vscode/
 
 # Gradle cache directory
 TallerMecatronico/.gradle/
