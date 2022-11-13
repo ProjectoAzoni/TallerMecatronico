@@ -144,7 +144,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   player: {fileID: 0}
-  followRange: 17
+  followRange: 20
   notFollowRange: 50
 --- !u!195 &8743683288818260529
 NavMeshAgent:

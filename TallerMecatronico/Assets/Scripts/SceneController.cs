@@ -39,6 +39,9 @@ public class SceneController : MonoBehaviour
         //Load again the active scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene.buildIndex);
     }
+    public void ReloadCurrentSceneAs(){
+        GoToSceneAs(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
 
     //Get all the saved Stars to show in the Main Menu
     public void LoadDataMainMenu(int scene) { 

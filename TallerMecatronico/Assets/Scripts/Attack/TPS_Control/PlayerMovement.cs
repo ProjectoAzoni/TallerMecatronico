@@ -102,6 +102,15 @@ public class PlayerMovement : MonoBehaviour
 		psm.PlayerShoot();
 	}
 
+	public void SetPlayerSpeed(float speed){
+		StartCoroutine("SetPlayerSpeedIE", speed);
+	}
+	IEnumerator SetPlayerSpeedIE(float speed){
+		this.speed = (float)speed;
+		yield return new WaitForSeconds(0.6f);
+		this.speed = 5f;
+	}
+
 	public void Jump() {
 		if(JoystickRight.jump) {
 			JoystickRight.jump = false;
