@@ -83,10 +83,10 @@ public class ItemsManager : MonoBehaviour
         ,{"medias",         clasificacion[5,0],clasificacion[5,1],characteristics[0], characteristics[1]}
         ,{"gorras"  ,       clasificacion[5,0],clasificacion[5,1],characteristics[0], characteristics[1]}
         ,{"cubiertos",      clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
-        ,{"cubiertos",      clasificacion[6,0],clasificacion[6,1],characteristics[0], characteristics[1]}
-        ,{"cubiertos",      clasificacion[4,0],clasificacion[4,1],characteristics[0], characteristics[1]}
+        ,{"cubiertos1",      clasificacion[6,0],clasificacion[6,1],characteristics[0], characteristics[1]}
+        ,{"cubiertos2",      clasificacion[4,0],clasificacion[4,1],characteristics[0], characteristics[1]}
         ,{"platos",         clasificacion[6,0],clasificacion[6,1],characteristics[0], characteristics[1]}
-        ,{"platos",         clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
+        ,{"platos1",         clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
         
     };
     
@@ -94,6 +94,7 @@ public class ItemsManager : MonoBehaviour
 
     [SerializeField] public int itemNum = 10;
     [SerializeField] public GameObject ItemPrefab;
+    //[SerializeField] GameObject [] itemsMesh;
     [SerializeField] Transform ItemsSpawnStartPos, ParentObj;
     [SerializeField] ItemTimerHandeler ith;
     [SerializeField] TextAnimManager tam;
@@ -139,6 +140,16 @@ public class ItemsManager : MonoBehaviour
             ItemsObj[i].name = items1[itemName,0];
             tm.myType = items1[itemName, 1];
             tm.myThrowPlace = items1[itemName,2];
+            /*for(int h = 0; h < itemsMesh.Length; h++){
+                if(itemsMesh[h].name == ItemsObj[i].name){
+                    for (int c = 0; c < itemsMesh[h].GetComponentsInChildren<GameObject>().Length; c++)
+                    {
+                        if(itemsMesh[h].GetComponentsInChildren<GameObject>()[c].name == "Mesh"){
+                            GameObject obj = Instantiate(itemsMesh[h], Vector3.zero, Quaternion.identity, itemsMesh[h].GetComponentsInChildren<GameObject>()[c].transform);
+                        }
+                    }
+                }
+            }*/
             if (items1[itemName, 3] != "" &&  items1[itemName, 4]!=""){
                 List<string> myList = new List<string>(tm.characteristics);
                 myList.Add(items1[itemName, 3]);
