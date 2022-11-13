@@ -26,6 +26,10 @@ TallerMecatronico/[Aa]ssets/Plugins/Editor/JetBrains*
 # Visual Studio cache directory
 TallerMecatronico/.vs/
 
+# Visual Studio Code cache
+
+TallerMecatronico/.vscode/
+
 # Gradle cache directory
 TallerMecatronico/.gradle/
 
