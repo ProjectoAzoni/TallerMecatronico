@@ -2761,6 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524ac2453ead67e4f8547d3a29f6e8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
 --- !u!54 &623441811
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11361,7 +11362,7 @@ MonoBehaviour:
   - {x: -1.9, y: 1.8, z: -0.71}
   - {x: -9.54, y: 1.8, z: -1.73}
   spawnScale:
-  - {x: 10, y: 1, z: 14}
+  - {x: 10, y: 1, z: 12}
   - {x: 4, y: 1, z: 10}
   - {x: 11, y: 1, z: 7}
   timeRemaining: 300
