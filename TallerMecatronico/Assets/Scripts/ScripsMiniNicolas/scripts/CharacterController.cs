@@ -35,7 +35,7 @@ public class CharacterController : MonoBehaviour
 
     bool isLeft = false;
     bool isRight = false;
-    bool isdispara = false;
+    //bool isdispara = false;
     bool isJump = false;
 
     private void Start()
@@ -176,12 +176,12 @@ public class CharacterController : MonoBehaviour
     public void clickdispara()
     {
         dispara();
-        isdispara = true;
+        //isdispara = true;
     }
 
     public void releasedispara()
     {
-        isdispara = false;        
+        //isdispara = false;        
     }
 
     public void clickJump()

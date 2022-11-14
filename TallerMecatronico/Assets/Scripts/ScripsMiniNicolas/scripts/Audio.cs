@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Audio : MonoBehaviour
 {
-    [SerializeField] AudioSource audio;
+    [SerializeField] AudioSource audios;
     [SerializeField] AudioSource music;
     
     public void Offaudio()
     {
-        audio.Stop();
+        audios.Stop();
     }
     public void ONaudio()
     {
-        audio.Play();
+        audios.Play();
     }
     
     
