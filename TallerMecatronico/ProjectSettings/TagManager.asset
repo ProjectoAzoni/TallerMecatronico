@@ -22,7 +22,7 @@ TagManager:
   - UI
   - Enemy
   - 
-  - 
+  - Objetos de fondo
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Objetos
+    uniqueID: 3492752787
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
