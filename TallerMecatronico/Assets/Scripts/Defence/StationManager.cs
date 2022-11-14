@@ -52,7 +52,7 @@ public class StationManager : MonoBehaviour
                     items.RemoveAt(i);
                 }
             }
-            if(stationCanvas.activeInHierarchy){
+            if(stationCanvas.activeInHierarchy && itemCount > 0){
                 if(items[0].GetComponent<TrashManager>().myTimer == 0f)
                 {
                     stationCanvas.GetComponentInChildren<Slider>().value += Time.unscaledDeltaTime;

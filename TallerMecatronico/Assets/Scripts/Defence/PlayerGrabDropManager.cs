@@ -16,7 +16,8 @@ public class PlayerGrabDropManager : MonoBehaviour
     // the current state of the player
     public string currentState;
     //definition of the object that has been hit and the past hit object
-    GameObject hitObj = null, currentHitObj = null;
+    GameObject hitObj = null;
+    public GameObject currentHitObj = null;
     // definition of the current object/trash manager of the hit object
     TrashManager currenttrm = null;
     // object to keep tack of the trash

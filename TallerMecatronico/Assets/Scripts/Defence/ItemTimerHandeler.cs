@@ -35,14 +35,16 @@ public class ItemTimerHandeler : MonoBehaviour
                     panelItems[i].GetComponentInChildren<Slider>().value -= Time.unscaledDeltaTime;
                     if (panelItems[i].GetComponentInChildren<Slider>().value <= 0){
                         
-                        if (pgd.currentState == pgd.states[0]) {
+                        if (pgd.currentState == pgd.states[0] && pgd.currentHitObj == items[i]) {
                             pgd.currentState = pgd.states[1];
                         }
+                        items[i].GetComponent<TrashManager>().currentState = items[i].GetComponent<TrashManager>().states[items[i].GetComponent<TrashManager>().states.Length-1];
+                        StartCoroutine("RestItemNum", i);
                         items[i].SetActive(false);
                         panelItems[i].SetActive(false);
                         items.RemoveAt(i);
                         panelItems.RemoveAt(i);
-                        timers.RemoveAt(i);                    
+                        timers.RemoveAt(i);                   
                     } 
                 }
                 for (int k = 0; k < items.Count; k++)
@@ -86,6 +88,12 @@ public class ItemTimerHandeler : MonoBehaviour
             items.Add(item);
             ShowItems(item);
         }     
+    }
+    IEnumerator RestItemNum(int number){
+        if(panelItems.Count > 0){
+            panelItems[number].GetComponent<Animator>().SetTrigger("Exit");
+            yield return new WaitForSeconds(1.5f);
+        }      
     }
     public IEnumerator RestItem(GameObject item){
         if(items.Count > 0){
