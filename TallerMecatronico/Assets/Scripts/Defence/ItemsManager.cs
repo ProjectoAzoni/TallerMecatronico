@@ -64,17 +64,17 @@ public class ItemsManager : MonoBehaviour
         ,{"envase",         clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
         ,{"jeringa",        clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
         ,{"guantes",        clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
-        ,{"empaque huevo",  clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
+        /*,{"empaque huevo",  clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}*/
         ,{"sillas",         clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
         ,{"Empaque huevo",  clasificacion[0,0],clasificacion[0,1],"",""}
-        ,{"Periodico",      clasificacion[0,0],clasificacion[0,1],"",""}
+        /*,{"Periodico",      clasificacion[0,0],clasificacion[0,1],"",""}*/
         ,{"Hojas",          clasificacion[0,0],clasificacion[0,1],"",""}
         ,{"Carpetas",       clasificacion[0,0],clasificacion[0,1],"",""}
         ,{"Cajas",          clasificacion[0,0],clasificacion[0,1],"",""}
-        ,{"Pedazos",        clasificacion[2,0],clasificacion[2,1],"",""}
-        ,{"Botella",        clasificacion[2,0],clasificacion[2,1],characteristics[0], characteristics[1]}
-        ,{"zapato cuero",   clasificacion[7,0],clasificacion[7,1],characteristics[0], characteristics[1]}
-        ,{"correa cuero",   clasificacion[7,0],clasificacion[7,1],characteristics[0], characteristics[1]}
+        /*,{"Pedazos",        clasificacion[2,0],clasificacion[2,1],"",""}*/
+        ,{"Botella1",       clasificacion[2,0],clasificacion[2,1],characteristics[0], characteristics[1]}
+        /*,{"zapato cuero",   clasificacion[7,0],clasificacion[7,1],characteristics[0], characteristics[1]}
+        ,{"correa cuero",   clasificacion[7,0],clasificacion[7,1],characteristics[0], characteristics[1]}*/
         ,{"guantes cuero",  clasificacion[7,0],clasificacion[7,1],characteristics[0], characteristics[1]}
         ,{"pantalon",       clasificacion[5,0],clasificacion[5,1],characteristics[0], characteristics[1]}
         ,{"camisa",         clasificacion[5,0],clasificacion[5,1],characteristics[0], characteristics[1]}
@@ -83,10 +83,10 @@ public class ItemsManager : MonoBehaviour
         ,{"medias",         clasificacion[5,0],clasificacion[5,1],characteristics[0], characteristics[1]}
         ,{"gorras"  ,       clasificacion[5,0],clasificacion[5,1],characteristics[0], characteristics[1]}
         ,{"cubiertos",      clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
-        ,{"cubiertos1",      clasificacion[6,0],clasificacion[6,1],characteristics[0], characteristics[1]}
-        ,{"cubiertos2",      clasificacion[4,0],clasificacion[4,1],characteristics[0], characteristics[1]}
+        ,{"cubiertos1",     clasificacion[6,0],clasificacion[6,1],characteristics[0], characteristics[1]}
+        ,{"cubiertos2",     clasificacion[4,0],clasificacion[4,1],characteristics[0], characteristics[1]}
         ,{"platos",         clasificacion[6,0],clasificacion[6,1],characteristics[0], characteristics[1]}
-        ,{"platos1",         clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
+        ,{"platos1",        clasificacion[3,0],clasificacion[3,1],characteristics[0], characteristics[1]}
         
     };
     
@@ -94,7 +94,7 @@ public class ItemsManager : MonoBehaviour
 
     [SerializeField] public int itemNum = 10;
     [SerializeField] public GameObject ItemPrefab;
-    //[SerializeField] GameObject [] itemsMesh;
+    [SerializeField] GameObject [] itemsMesh;
     [SerializeField] Transform ItemsSpawnStartPos, ParentObj;
     [SerializeField] ItemTimerHandeler ith;
     [SerializeField] TextAnimManager tam;
@@ -140,16 +140,19 @@ public class ItemsManager : MonoBehaviour
             ItemsObj[i].name = items1[itemName,0];
             tm.myType = items1[itemName, 1];
             tm.myThrowPlace = items1[itemName,2];
-            /*for(int h = 0; h < itemsMesh.Length; h++){
+
+            for(int h = 0; h < itemsMesh.Length; h++){
                 if(itemsMesh[h].name == ItemsObj[i].name){
-                    for (int c = 0; c < itemsMesh[h].GetComponentsInChildren<GameObject>().Length; c++)
+                    for (int c = 0; c < ItemsObj[i].GetComponentsInChildren<Transform>().Length; c++)
                     {
-                        if(itemsMesh[h].GetComponentsInChildren<GameObject>()[c].name == "Mesh"){
-                            GameObject obj = Instantiate(itemsMesh[h], Vector3.zero, Quaternion.identity, itemsMesh[h].GetComponentsInChildren<GameObject>()[c].transform);
+                        if(ItemsObj[i].GetComponentsInChildren<Transform>()[c].gameObject.name == "Mesh"){
+                            GameObject obj = Instantiate(itemsMesh[h], Vector3.zero, Quaternion.identity, ItemsObj[i].GetComponentsInChildren<Transform>()[c].gameObject.name == "Mesh"?ItemsObj[i].GetComponentsInChildren<Transform>()[c] : ItemsObj[i].transform);
+                            obj.transform.position = ItemsObj[i].GetComponentsInChildren<Transform>()[c].position;
                         }
                     }
                 }
-            }*/
+            }
+
             if (items1[itemName, 3] != "" &&  items1[itemName, 4]!=""){
                 List<string> myList = new List<string>(tm.characteristics);
                 myList.Add(items1[itemName, 3]);
