@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/2DGame/2DGame.unity
     guid: e958536b1876c4a4bbdda079f68b2c98
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: 0d9cc2764a608a84eb1eba5bd39aeca7
   m_configObjects: {}
