@@ -18,7 +18,7 @@ public class TMNpcDialogueManager : MonoBehaviour
     private bool didDialougeStart;
     public bool isLevelUnlocked;
     public float tiempo;
-    public string Scene;
+    [SerializeField] public string scene;
     private int index;
     public float typingTime = 0.05f;
 
@@ -28,7 +28,7 @@ public class TMNpcDialogueManager : MonoBehaviour
         sceneController = sceneManager.GetComponent<SceneController>();
     
         touchControlManager2d = ControlCanvas.GetComponent<TouchControlManager2d>();
-
+       
     }
 
 
@@ -119,7 +119,7 @@ public class TMNpcDialogueManager : MonoBehaviour
     IEnumerator Waitfor(float tiempo)
     {
         yield return new WaitForSeconds(tiempo);
-        sceneController.GoToScene(Scene);
+        sceneController.GoToScene(scene);
     }
 
    
