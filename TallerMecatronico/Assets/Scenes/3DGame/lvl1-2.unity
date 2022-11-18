@@ -216,6 +216,33 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb417237f75c88d4388e11944878c5e0, type: 3}
   - {fileID: 21300000, guid: 1dfce7044c469b34dbdd7028ccaf69e3, type: 3}
   - {fileID: 21300000, guid: cd9af7f495528524f8582164e4ad3976, type: 3}
+  cardSprites:
+  - {fileID: 21300000, guid: 99ca9a9fa371a5048bd835db270a77f8, type: 3}
+  - {fileID: 21300000, guid: c121a7a4415ba7a49bb8c8a42c33c236, type: 3}
+  - {fileID: 21300000, guid: df944ef9f3266b14a9c03e965b8aa382, type: 3}
+  - {fileID: 21300000, guid: 38517552899c90d41bc11872ba37190f, type: 3}
+  - {fileID: 21300000, guid: 1216dc0aa58a5da4387c133aa342424f, type: 3}
+  - {fileID: 21300000, guid: 7296c223665454c43bc3dd89247607f3, type: 3}
+  - {fileID: 21300000, guid: dd2b48343156a604d962d3b44de9e631, type: 3}
+  - {fileID: 21300000, guid: c5fb620c58e27824784f0c41cd3bd09a, type: 3}
+  - {fileID: 21300000, guid: 25b33fe5481090e49880e6a6c16a7869, type: 3}
+  - {fileID: 21300000, guid: 507431dd17343c64d81532af8bc9bfa1, type: 3}
+  - {fileID: 21300000, guid: 9b630073d1dcad545a892cfdc79e26a7, type: 3}
+  - {fileID: 21300000, guid: 09d93ab965bfe084489b8f12f9ab60c7, type: 3}
+  - {fileID: 21300000, guid: 40aa02115ed14ed489a74c49e39c5d17, type: 3}
+  - {fileID: 21300000, guid: e9f091804a20a6b4a8e9ba969d69f764, type: 3}
+  - {fileID: 21300000, guid: 801f79faee10c634485c2115f5bb68a8, type: 3}
+  - {fileID: 21300000, guid: 07897fbbaf4a49c4aaf2eb1aead24aa1, type: 3}
+  - {fileID: 21300000, guid: 54c6a0413edb6624a833362d687c4fec, type: 3}
+  - {fileID: 21300000, guid: 4ae82962799be604ea69ccd9797f83e3, type: 3}
+  - {fileID: 21300000, guid: aefc6ecc6fd5e0e48b2731f7b560a534, type: 3}
+  - {fileID: 21300000, guid: 086c03b38eca9fc4ebed84d63f095e45, type: 3}
+  - {fileID: 21300000, guid: eb8c9959b3bae734a920dc5817bb671e, type: 3}
+  - {fileID: 21300000, guid: 7ae2610fe59716c4e8590cbd1a85df6a, type: 3}
+  - {fileID: 21300000, guid: 91baed50536a2314aa5ae68dbec04366, type: 3}
+  - {fileID: 21300000, guid: 3afeaf8e56172bd459ec48fa0b4d310f, type: 3}
+  - {fileID: 21300000, guid: 2b9dbc6cf50d6954b9cc24e7c6406fc0, type: 3}
+  - {fileID: 21300000, guid: a62cae77cfa3f6745aa2e1bf6c5a839a, type: 3}
   trashTimers: c8000000c8000000c8000000
   im: {fileID: 2146161952}
 --- !u!4 &26102123
@@ -9614,7 +9641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.1, y: 39}
+  m_AnchoredPosition: {x: 122.1001, y: 39}
   m_SizeDelta: {x: 950, y: 310.0193}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1767632711

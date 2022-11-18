@@ -14,6 +14,9 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField]List<float> timers = new List<float>(); 
     [SerializeField] Sprite [] characSprites;
 
+
+    [SerializeField] Sprite [] cardSprites;
+
     [Header("Time for green, white and black")]
     [SerializeField]public int [] trashTimers;
     [SerializeField] ItemsManager im;
@@ -127,6 +130,14 @@ public class ItemTimerHandeler : MonoBehaviour
             
             int nume = 0;
             GameObject obj = Instantiate(itemPanelPrefab, new Vector3(showPanel.transform.position.x,showPanel.transform.position.y,showPanel.transform.position.z), Quaternion.identity, showPanel.transform);
+            for (int f = 0; f < cardSprites.Length; f++)
+            {
+                if(cardSprites[f].name == item.name){
+                    obj.GetComponent<Image>().sprite = cardSprites[f];
+                    obj.GetComponent<Image>().type = Image.Type.Simple;
+                    obj.GetComponent<Image>().preserveAspect = true;
+                }
+            }
             if (tm.myThrowPlace == tm.throwPlaces[0]){
                 nume = 0;
                 obj.GetComponent<Image>().color = new Color (0,255,0, 0.4f);
