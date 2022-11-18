@@ -107,8 +107,8 @@ public class PlayerMovement : MonoBehaviour
 	}
 	IEnumerator SetPlayerSpeedIE(float speed){
 		this.speed = (float)speed;
-		yield return new WaitForSeconds(0.6f);
-		this.speed = 5f;
+		yield return new WaitForSeconds(0.5f);
+		this.speed = 6f;
 	}
 
 	public void Jump() {

@@ -20,13 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2DGame/MiniJuegoNicolas/MiniGame1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: 0d9cc2764a608a84eb1eba5bd39aeca7
   - enabled: 0
     path: Assets/Scenes/3DGame/3DGame.unity
     guid: 1bb5a14f79787ba4abacb3952268cd6e
   - enabled: 0
     path: Assets/Scenes/2DGame/2DGame.unity
     guid: e958536b1876c4a4bbdda079f68b2c98
-  - enabled: 1
-    path: Assets/Scenes/LevelSelector.unity
-    guid: 0d9cc2764a608a84eb1eba5bd39aeca7
   m_configObjects: {}
