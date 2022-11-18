@@ -15,15 +15,16 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'RightUpperLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
-    animationCompression: 1
+    importConstraints: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -51,8 +52,8 @@ ModelImporter:
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
+    skinWeightsMode: 1
+    maxBonesPerVertex: 68
     minBoneWeight: 0.001
     meshOptimizationFlags: -1
     indexFormat: 0
@@ -76,8 +77,174 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: polySurface3
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polySurface6 1
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: uploads_files_2742248_plastic(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: aiSkyDomeLight1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder3
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.037320603, y: 0.26436314, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 4.119339, y: 5.3534346, z: 4.119339}
+    - name: cup:pCylinder3
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.11392512, y: 0.22258908, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: straw:polySurface1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.19987532, y: 0.22258908, z: 0}
+      rotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bag:polySurface1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.43150696, y: -0.18315822, z: -0.01613928}
+      rotation: {x: -0.001381453, y: -0.00012309614, z: -0.020798773, w: 0.99978274}
+      scale: {x: 6.1157947, y: 6.1157947, z: 6.1157947}
+    - name: bag:polySurface2
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.4132585, y: 0.02278109, z: -0.21233967}
+      rotation: {x: -0.001304456, y: -0.00011623522, z: -0.01963953, w: 0.9998063}
+      scale: {x: 5.8883495, y: 5.8883495, z: 5.8883495}
+    - name: bottle:polySurface1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.3413512, y: 0.26910937, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.8660297, y: 3.8660297, z: 3.8660297}
+    - name: polySurface4
+      parentName: bottle:polySurface1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface5
+      parentName: bottle:polySurface1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bottle3:polySurface2pCylinder3
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.5215963, y: 0.22180907, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 5.6956887, y: 5.6956887, z: 5.6956887}
+    - name: polySurface1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.31697688, y: 0.22258908, z: 0}
+      rotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bowl5:pCylinder4
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.30477566, y: 0.008313769, z: -0.011080355}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 4.64419, y: 4.64419, z: 4.64419}
+    - name: fork:pCube2
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.31657755, y: 0.091308646, z: 0}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+      scale: {x: 0.4870583, y: 0.4870583, z: 0.4870583}
+    - name: spoon:pCube3
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.37206167, y: 0.16208227, z: 0}
+      rotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+      scale: {x: 1.2328724, y: 1, z: 1}
+    - name: bottle4:polySurface2pCylinder3
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.68576664, y: -0.08112906, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 7.1463294, y: 7.1463294, z: 7.1463294}
+    - name: bowl:pCylinder4
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.36933014, y: -0.17779616, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 5.14233, y: 5.14233, z: 5.14233}
+    - name: buubleetea_cup:pCylinder5
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.0059924903, y: -0.23887716, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.079323, y: 3.079323, z: 3.079323}
+    - name: buubleetea_cup:pSphere1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.13395153, y: -0.23130552, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.079323, y: 3.079323, z: 3.079323}
+    - name: buubleetea_cup:pCylinder4
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.13395153, y: -0.23130552, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.079323, y: 3.079323, z: 3.079323}
+    - name: polySurface3
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.52866554, y: 0.298501, z: -0.0029157226}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface6 1
+      parentName: polySurface3
+      position: {x: -0.52866554, y: -0.298501, z: 0.0029157226}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform3
+      parentName: polySurface6 1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface7
+      parentName: polySurface3
+      position: {x: -0.52866554, y: -0.298501, z: 0.0029157226}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform2
+      parentName: polySurface7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform1
+      parentName: polySurface3
+      position: {x: -0.52866554, y: -0.298501, z: 0.0029157226}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder4
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.09577418, y: 0.060922265, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.1625476, y: 3.3064003, z: 2.1625476}
+    - name: polySurface6
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: 0.52866554, y: 0.298501, z: -0.0029157232}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pPlane1
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.022658262, y: 0.08450365, z: 0}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+      scale: {x: 13.478636, y: 13.478636, z: 13.478636}
+    - name: polySurface8
+      parentName: uploads_files_2742248_plastic(Clone)
+      position: {x: -0.67079526, y: -0.18315822, z: -0.01613928}
+      rotation: {x: -0.001381453, y: -0.00012309614, z: -0.020798773, w: 0.99978274}
+      scale: {x: 6.1157947, y: 6.1157947, z: 6.1157947}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -88,13 +255,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

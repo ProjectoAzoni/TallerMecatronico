@@ -63,6 +63,7 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
+*.keystore
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -74,3 +75,4 @@ TallerMecatronico/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 TallerMecatronico/Temp/UnityLockfile
+TallerMecatronico/ProjectSettings/ProjectSettings.asset

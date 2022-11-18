@@ -14,6 +14,9 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField]List<float> timers = new List<float>(); 
     [SerializeField] Sprite [] characSprites;
 
+
+    [SerializeField] Sprite [] cardSprites;
+
     [Header("Time for green, white and black")]
     [SerializeField]public int [] trashTimers;
     [SerializeField] ItemsManager im;
@@ -35,14 +38,16 @@ public class ItemTimerHandeler : MonoBehaviour
                     panelItems[i].GetComponentInChildren<Slider>().value -= Time.unscaledDeltaTime;
                     if (panelItems[i].GetComponentInChildren<Slider>().value <= 0){
                         
-                        if (pgd.currentState == pgd.states[0]) {
+                        if (pgd.currentState == pgd.states[0] && pgd.currentHitObj == items[i]) {
                             pgd.currentState = pgd.states[1];
                         }
+                        items[i].GetComponent<TrashManager>().currentState = items[i].GetComponent<TrashManager>().states[items[i].GetComponent<TrashManager>().states.Length-1];
+                        StartCoroutine("RestItemNum", i);
                         items[i].SetActive(false);
                         panelItems[i].SetActive(false);
                         items.RemoveAt(i);
                         panelItems.RemoveAt(i);
-                        timers.RemoveAt(i);                    
+                        timers.RemoveAt(i);                   
                     } 
                 }
                 for (int k = 0; k < items.Count; k++)
@@ -87,6 +92,12 @@ public class ItemTimerHandeler : MonoBehaviour
             ShowItems(item);
         }     
     }
+    IEnumerator RestItemNum(int number){
+        if(panelItems.Count > 0){
+            panelItems[number].GetComponent<Animator>().SetTrigger("Exit");
+            yield return new WaitForSeconds(1.5f);
+        }      
+    }
     public IEnumerator RestItem(GameObject item){
         if(items.Count > 0){
             for(int i =0; i < items.Count; i++){
@@ -119,6 +130,14 @@ public class ItemTimerHandeler : MonoBehaviour
             
             int nume = 0;
             GameObject obj = Instantiate(itemPanelPrefab, new Vector3(showPanel.transform.position.x,showPanel.transform.position.y,showPanel.transform.position.z), Quaternion.identity, showPanel.transform);
+            for (int f = 0; f < cardSprites.Length; f++)
+            {
+                if(cardSprites[f].name == item.name){
+                    obj.GetComponent<Image>().sprite = cardSprites[f];
+                    obj.GetComponent<Image>().type = Image.Type.Simple;
+                    obj.GetComponent<Image>().preserveAspect = true;
+                }
+            }
             if (tm.myThrowPlace == tm.throwPlaces[0]){
                 nume = 0;
                 obj.GetComponent<Image>().color = new Color (0,255,0, 0.4f);

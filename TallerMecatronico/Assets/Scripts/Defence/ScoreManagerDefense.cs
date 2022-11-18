@@ -38,7 +38,7 @@ public class ScoreManagerDefense : MonoBehaviour
         int count = 0;
         for (int i = 0; i < items.Count; i++)
         {
-            if(!items[i].activeInHierarchy){
+            if(!items[i].activeInHierarchy && items[i].GetComponent<TrashManager>().currentState != items[i].GetComponent<TrashManager>().states[items[i].GetComponent<TrashManager>().states.Length-1]){
                 count++;
             }
         }
