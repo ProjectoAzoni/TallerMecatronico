@@ -22,6 +22,9 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField] ItemsManager im;
     
 
+
+    GameObject panelImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,23 +133,31 @@ public class ItemTimerHandeler : MonoBehaviour
             
             int nume = 0;
             GameObject obj = Instantiate(itemPanelPrefab, new Vector3(showPanel.transform.position.x,showPanel.transform.position.y,showPanel.transform.position.z), Quaternion.identity, showPanel.transform);
+            Transform [] objs  = obj.GetComponentsInChildren<Transform>();
+            obj.GetComponent<Image>().color = new Color (255,255,255, 0.55f);
+            for (int x = 0; x < objs.Length; x++)
+            {
+                if(objs[x].gameObject.name == "ItemImage"){
+                    panelImage = objs[x].gameObject;
+                }
+            }
             for (int f = 0; f < cardSprites.Length; f++)
             {
-                if(cardSprites[f].name == item.name){
-                    obj.GetComponent<Image>().sprite = cardSprites[f];
-                    obj.GetComponent<Image>().type = Image.Type.Simple;
-                    obj.GetComponent<Image>().preserveAspect = true;
+                if(cardSprites[f].name == item.name && panelImage != null){
+                    panelImage.GetComponent<Image>().sprite = cardSprites[f];
+                    panelImage.GetComponent<Image>().type = Image.Type.Simple;
+                    panelImage.GetComponent<Image>().preserveAspect = true;
                 }
             }
             if (tm.myThrowPlace == tm.throwPlaces[0]){
                 nume = 0;
-                obj.GetComponent<Image>().color = new Color (0,255,0, 0.4f);
+                //obj.GetComponent<Image>().color = new Color (0,255,0, 0.4f);
             }else if (tm.myThrowPlace == tm.throwPlaces[1]){
                 nume = 1;
-                obj.GetComponent<Image>().color = new Color (255,255,255, 0.4f);
+                //obj.GetComponent<Image>().color = new Color (255,255,255, 0.4f);
             } else if (tm.myThrowPlace == tm.throwPlaces[2]){
                 nume = 2;
-                obj.GetComponent<Image>().color = new Color (0,0,0, 0.4f);
+                //obj.GetComponent<Image>().color = new Color (0,0,0, 0.4f);
             }
             timers.Add(trashTimers[nume]);
             obj.GetComponentInChildren<Slider>().maxValue = trashTimers[nume];

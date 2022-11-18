@@ -13,6 +13,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] GameObject [] enemys, miniBoss;
 
+    [SerializeField] GameObject panelAnim;
+
     [SerializeField] GameObject gateDefense;
 
     [SerializeField] GameObject boss;
@@ -129,6 +131,7 @@ public class ScoreManager : MonoBehaviour
         score = Mathf.RoundToInt(maxScore*enemyPerc);
         if(enemyPerc != (float)0f && enemyPerc >= (float)defensePercentaje/100f){
             stars = 1;
+            panelAnim.GetComponent<Animator>().SetTrigger("Play");
             OpenGateDefense();
         }
         

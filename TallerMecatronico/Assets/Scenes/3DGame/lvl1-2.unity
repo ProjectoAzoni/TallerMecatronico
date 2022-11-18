@@ -6934,6 +6934,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7580720169996599519, guid: 5f861efa4bc623a46b094c2502cc7df9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1827452172}
+    - target: {fileID: 7580720169996599519, guid: 5f861efa4bc623a46b094c2502cc7df9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToSceneAs
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f861efa4bc623a46b094c2502cc7df9, type: 3}
 --- !u!114 &1366221464 stripped

@@ -888,7 +888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e5d072c451b21024d889a242d4c9bb6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b59bfea214f71f347950f661fb399b98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7519,7 +7519,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -88.24992}
-  m_SizeDelta: {x: 1467.9, y: 998.2}
+  m_SizeDelta: {x: 1950, y: 998.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1561027111
 MonoBehaviour:
@@ -9450,7 +9450,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916986591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1955613862}
@@ -9459,7 +9459,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -76.6, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916986593
 MonoBehaviour:
@@ -9483,7 +9483,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e3d106081fe6bd94496f9d43b6f7e1ed, type: 3}
-    m_FontSize: 150
+    m_FontSize: 93
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -9498,7 +9498,7 @@ MonoBehaviour:
 
     DE
 
-    NIVELES(WIP)'
+    NIVELES (WIP)'
 --- !u!222 &1916986594
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9648,7 +9648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 06363f4600e338f4c84afd148eeba79b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fac11d1d1b0778843b14774394b92dfa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11003,6 +11003,14 @@ PrefabInstance:
     - target: {fileID: 2954790521653158082, guid: 69a7aa56c402de3438e9e9fe4d5f0b28, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379907908302022995, guid: 69a7aa56c402de3438e9e9fe4d5f0b28, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fb25401a763afb44eb44b5eca5e90349, type: 3}
+    - target: {fileID: 5608043468506628465, guid: 69a7aa56c402de3438e9e9fe4d5f0b28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7423651111299733983, guid: 69a7aa56c402de3438e9e9fe4d5f0b28, type: 3}
       propertyPath: m_Pivot.x
