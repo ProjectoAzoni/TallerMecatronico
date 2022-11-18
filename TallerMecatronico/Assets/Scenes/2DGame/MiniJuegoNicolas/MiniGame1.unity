@@ -1601,6 +1601,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToSceneAs
       objectReference: {fileID: 0}
+    - target: {fileID: 7580720169996599519, guid: 5f861efa4bc623a46b094c2502cc7df9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 894622431}
+    - target: {fileID: 7580720169996599519, guid: 5f861efa4bc623a46b094c2502cc7df9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToSceneAs
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f861efa4bc623a46b094c2502cc7df9, type: 3}
 --- !u!1 &125526354
@@ -3457,7 +3465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4dd5e44af0ee94f88cd07e91a751eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 251621325}
+  audios: {fileID: 0}
   music: {fileID: 251621324}
 --- !u!4 &255997083 stripped
 Transform:
