@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-TallerMecatronico\[Ll]ibrary\
+TallerMecatronico\[Ll]ibrary
 /TallerMecatronico/[Tt]emp/
 /TallerMecatronico/[Oo]bj/
 /TallerMecatronico/[Bb]uild/
