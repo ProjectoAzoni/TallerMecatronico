@@ -97,14 +97,14 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] GameObject [] itemsMesh;
     [SerializeField] Transform ItemsSpawnStartPos, ParentObj;
     [SerializeField] ItemTimerHandeler ith;
-    [SerializeField] TextAnimManager tam;
+    // [SerializeField] TextAnimManager tam;
     [SerializeField] Text countDownText;
     [SerializeField] GameObject endCanvas, endPanel;
     [SerializeField] float itemSpawnTime;
     [SerializeField] public float ItemSpawnRepeatRate;
     
-    [SerializeField]Vector3 [] spawnPos = {new Vector3(5.33f,2f,-2.7f),new Vector3(-1.9f,2f,-0.71f),new Vector3(-9.54f,2f,-1.73f)};
-    [SerializeField]Vector3 [] spawnScale = {new Vector3(10, 1, 14), new Vector3(4, 1, 10), new Vector3(11, 1, 7)}; 
+    [SerializeField]Vector3 [] spawnPos;
+    [SerializeField]Vector3 [] spawnScale; 
     //time on seconds 300 = 5min
     [SerializeField][Tooltip("Time in seconds")] public float timeRemaining = 300;
      public bool timerIsRunning = false;
@@ -113,6 +113,7 @@ public class ItemsManager : MonoBehaviour
     public List<GameObject> ItemsObj = new List<GameObject>();
     public List<GameObject> ItemsObjStatic = new List<GameObject>();
 
+    [SerializeField] SoundManager soundManager;
     // Start is called before the first frame update
 
     void Awake(){
@@ -164,11 +165,12 @@ public class ItemsManager : MonoBehaviour
     }
 
     public void MoveItem(){
-        if(ItemsObj.Count > 0 && tam.isExit && timeRemaining > 0){
-            int numb  = UnityEngine.Random.Range(0,3);
+        if(ItemsObj.Count > 0 && timeRemaining > 0){
+            int numb  = UnityEngine.Random.Range(0,spawnPos.Length-1);
             
             Vector3 newPos = spawnPos[numb] + new Vector3(UnityEngine.Random.Range(-spawnScale[numb].x/2,spawnScale[numb].x/2),0f,UnityEngine.Random.Range(-spawnScale[numb].z/2,spawnScale[numb].z/2));
             ItemsObj[0].GetComponentInChildren<Animator>().SetTrigger("Entry");
+            soundManager.PlayFalling();
             ItemsObj[0].transform.position = newPos;
             ith.AddItem(ItemsObj[0]);
             ItemsObj.RemoveAt(0);
@@ -178,7 +180,7 @@ public class ItemsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerIsRunning && tam.isExit)
+        if (timerIsRunning )
         {
             if (timeRemaining > 0)
             {
@@ -201,9 +203,12 @@ public class ItemsManager : MonoBehaviour
         /*Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(new Vector3(0,0,0), new Vector3(80, 1, 20));*/
         Gizmos.color = new Color(0, 1, 0, 0.5f);
-        Gizmos.DrawCube(spawnPos[0], spawnScale[0]);
-        Gizmos.DrawCube(spawnPos[1], spawnScale[1]);
-        Gizmos.DrawCube(spawnPos[2], spawnScale[2]);
+        for (int i = 0; i < spawnPos.Length; i++){
+            Gizmos.DrawCube(spawnPos[i], spawnScale[i]);
+        }
+        // Gizmos.DrawCube(spawnPos[0], spawnScale[0]);
+        // Gizmos.DrawCube(spawnPos[1], spawnScale[1]);
+        // Gizmos.DrawCube(spawnPos[2], spawnScale[2]);
     }
     void DisplayTime(float timeToDisplay)
     {

@@ -15,6 +15,8 @@ public class StationManager : MonoBehaviour
     public int itemCount, minItemCount = 0, maxItemCount;
 
     string myType;
+
+    public string myPublicType;
     //list to store the items/trash
     [SerializeField]List<GameObject> items = new List<GameObject>();
 
@@ -25,8 +27,12 @@ public class StationManager : MonoBehaviour
         {"Shred",1},
         {"Melt",1},
         {"Compress",1},
-        {"Station",1}
+        {"Station",1},
+        {"DryWash",1}
     } ;
+
+    NotificationsHandeler nh;
+
     //at the start of the scene set the number of items to the minimun value
     // get the transform component of the object point
     // check the current station type and set the maximum item capablity
@@ -37,6 +43,8 @@ public class StationManager : MonoBehaviour
         dropPoint = dropPoint.GetComponent<Transform>();
         if (stationCanvas != null) {stationCanvas.SetActive(false);}
         CheckMyType();
+        myPublicType = myType;
+        nh = GameObject.Find("Notification_Canvas").GetComponent<NotificationsHandeler>();
     }
 
     // set the floating item to the first item in the list
@@ -47,7 +55,7 @@ public class StationManager : MonoBehaviour
                 items[0].transform.position = objPoint.position;
             }
             for(int i = 0; i < items.Count; i++){
-                if(!items[i].activeInHierarchy){
+                if(!items[i].activeInHierarchy || items[i].GetComponent<TrashManager>().currentState == items[i].GetComponent<TrashManager>().states[3]){
                     itemCount--;
                     items.RemoveAt(i);
                 }
@@ -124,6 +132,7 @@ public class StationManager : MonoBehaviour
             }
             else
             {
+                nh.ActionNotification(nh.actionList[7]);
                 //drop item
                 obj.GetComponentInChildren<Animator>().SetTrigger("Idle1");
                 tm.currentState = tm.states[1];

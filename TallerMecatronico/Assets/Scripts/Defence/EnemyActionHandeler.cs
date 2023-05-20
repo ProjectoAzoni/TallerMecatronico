@@ -12,9 +12,15 @@ public class EnemyActionHandeler : MonoBehaviour
     Vector3 startPos;
     [HideInInspector] public GameObject currentitem;
     ItemTimerHandeler ith;
-    bool grab = false;
+    SoundManager soundManager;
+    bool grab = false, completed = false;
+    public bool diff = false;
+
+    NotificationsHandeler nh;
+
     private void Awake() {
         em = FindObjectOfType<EnemyManager>();
+        nh = GameObject.Find("Notification_Canvas").GetComponent<NotificationsHandeler>();
     }
     // Start is called before the first frame update
     void Start()
@@ -25,41 +31,67 @@ public class EnemyActionHandeler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(grab && Vector3.Distance(transform.position, startPos) < 1f){
-            GetComponent<Animator>().SetTrigger("Exit");
-        }
+        // if(grab && Vector3.Distance(transform.position, startPos) < 1f){
+        //     GetComponent<Animator>().SetTrigger("Exit");
+        // }
 
-        if(currentitem != null && !grab){
+        if(currentitem != null && !grab && !completed){
             transform.LookAt(new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z));
             nm.SetDestination(new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z));
         }
-        if(grab && currentitem != null){
+        if(grab && currentitem != null && !completed){
                 currentitem.transform.position = grabPoint.position;
         }
+        if(transform.position.x == startPos.x && transform.position.z == startPos.z && grab && !completed){
+            gameObject.SetActive(false);
+            currentitem.gameObject.SetActive(false);
+            grab = false;
+            completed = true;
+        }
         
-        if(currentitem!= null && nm.destination != startPos && transform.position != em.enemySpawnStartPos.position){
-            if(Vector3.Distance(transform.position, new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z))<= nm.stoppingDistance + 1.2f){
-                if(currentitem.GetComponent<TrashManager>().currentState != currentitem.GetComponent<TrashManager>().states[1] && !grab){
-                    if(ith.GetPanel(currentitem) != null){
-                        ith.GetPanel(currentitem).GetComponent<Animator>().SetTrigger("Idle");
+        if(!diff){
+            if(currentitem!= null && nm.destination != startPos && transform.position != em.enemySpawnStartPos.position && !completed){
+                if(Vector3.Distance(transform.position, new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z))<= nm.stoppingDistance + 1.2f){
+                    if(currentitem.GetComponent<TrashManager>().currentState != currentitem.GetComponent<TrashManager>().states[1] && !grab){
+                        if(ith.GetPanel(currentitem) != null){
+                            soundManager.StopWarning();
+                            ith.GetPanel(currentitem).GetComponent<Animator>().SetTrigger("Idle");
+                        }
+                        nm.SetDestination(startPos);
+                        currentitem = null;
+                        em.isMoved = false;
+                        return;
                     }
-                    nm.SetDestination(startPos);
-                    currentitem = null;
-                    em.isMoved = false;
-                    
-                    return;
-                }
 
-                if(currentitem.GetComponent<TrashManager>().currentState == currentitem.GetComponent<TrashManager>().states[1]){
+                    if(currentitem.GetComponent<TrashManager>().currentState == currentitem.GetComponent<TrashManager>().states[1] && !grab){
+                        currentitem.transform.position = grabPoint.position;
+                        currentitem.GetComponent<TrashManager>().currentState = currentitem.GetComponent<TrashManager>().states[3];
+                        soundManager.StopTimer();
+                        soundManager.StopWarning();
+                        currentitem.GetComponentInChildren<Animator>().SetTrigger("Still");
+                        nm.SetDestination(startPos);
+                        grab = true;
+                        ith.StartCoroutine("RestItem",currentitem);
+                        em.isMoved = false;
+                        nh.ActionNotification(nh.actionList[9]);
+                    }
+                }
+            }
+
+        }else {
+            if(currentitem!= null && nm.destination != startPos && transform.position != em.enemySpawnStartPos.position && !grab && !completed){
+                if(Vector3.Distance(transform.position, new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z))<= nm.stoppingDistance + 2f){
                     currentitem.transform.position = grabPoint.position;
-                    currentitem.GetComponent<TrashManager>().currentState = currentitem.GetComponent<TrashManager>().states[0];
+                    currentitem.GetComponent<TrashManager>().currentState = currentitem.GetComponent<TrashManager>().states[3];
+                    soundManager.StopTimer();
+                    soundManager.StopWarning();
+                    currentitem.GetComponentInChildren<Animator>().SetTrigger("Still");
                     nm.SetDestination(startPos);
                     grab = true;
                     ith.StartCoroutine("RestItem",currentitem);
                     em.isMoved = false;
                 }
-                
-            }
+            }            
         }
     }
     public void MoveEnemy(Vector3 startPos, GameObject item, ItemTimerHandeler ith){
@@ -71,7 +103,13 @@ public class EnemyActionHandeler : MonoBehaviour
         this.ith = ith;
         if(ith.GetPanel(item) != null){
             ith.GetPanel(item).GetComponent<Animator>().SetTrigger("WarningE");
+            soundManager.PlayWarning();
         }
+    }
+    
+    public void SetEnemy(SoundManager soundManager,NotificationsHandeler nh){
+        this.soundManager = soundManager;
+        this.nh = nh;
     }
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(0, 1, 0, 0.5f);

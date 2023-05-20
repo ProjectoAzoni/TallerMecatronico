@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ItemTimerHandeler : MonoBehaviour
 {
     [SerializeField] PlayerGrabDropManager pgd;
+    [SerializeField] SoundManager soundManager;
     [SerializeField] GameObject showPanel;
     [SerializeField] GameObject itemPanelPrefab;
     [SerializeField]public List<GameObject> items = new List<GameObject>(); 
@@ -21,15 +22,14 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField]public int [] trashTimers;
     [SerializeField] ItemsManager im;
     
-
+    NotificationsHandeler nh;
 
     GameObject panelImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-         
+        nh = GameObject.Find("Notification_Canvas").GetComponent<NotificationsHandeler>();
     }
 
     // Update is called once per frame
@@ -37,21 +37,30 @@ public class ItemTimerHandeler : MonoBehaviour
     {   
         if(Time.timeScale == 1.0f && im.timeRemaining > 0){
             if(panelItems.Count > 0 & timers.Count > 0 & items.Count > 0){
-                for(int i = 0; i < timers.Count; i++){
+                for(int i = 0; i < timers.Count; i++)
+                {
+                    showPanel.GetComponent<RectTransform>().sizeDelta = new Vector2 ((160)*panelItems.Count, 0);
                     panelItems[i].GetComponentInChildren<Slider>().value -= Time.unscaledDeltaTime;
-                    if (panelItems[i].GetComponentInChildren<Slider>().value <= 0){
-                        
-                        if (pgd.currentState == pgd.states[0] && pgd.currentHitObj == items[i]) {
+                    if (panelItems[i].GetComponentInChildren<Slider>().value <= 0)
+                    {
+                        nh.ActionNotification(nh.actionList[8]);
+                        if (pgd.currentState == pgd.states[0] && pgd.currentHitObj == items[i]) 
+                        {
                             pgd.currentState = pgd.states[1];
                         }
-                        items[i].GetComponent<TrashManager>().currentState = items[i].GetComponent<TrashManager>().states[items[i].GetComponent<TrashManager>().states.Length-1];
-                        StartCoroutine("RestItemNum", i);
+                        soundManager.StopTimer();
+                        soundManager.PlayBlob();
+                        items[i].GetComponent<TrashManager>().currentState = items[i].GetComponent<TrashManager>().states[3];
+                        // StartCoroutine("RestItemNum", i);
                         items[i].SetActive(false);
                         panelItems[i].SetActive(false);
                         items.RemoveAt(i);
                         panelItems.RemoveAt(i);
                         timers.RemoveAt(i);                   
-                    } 
+                    }else if (panelItems[i].GetComponentInChildren<Slider>().value < 10){
+                        panelItems[i].GetComponentInChildren<Slider>().fillRect.gameObject.GetComponent<Image>().color = new Color(255,0,0);
+                        soundManager.PlayTimer();
+                    }
                 }
                 for (int k = 0; k < items.Count; k++)
                 {
@@ -97,20 +106,21 @@ public class ItemTimerHandeler : MonoBehaviour
     }
     IEnumerator RestItemNum(int number){
         if(panelItems.Count > 0){
-            panelItems[number].GetComponent<Animator>().SetTrigger("Exit");
+            // panelItems[number].GetComponent<Animator>().SetTrigger("Exit");
             yield return new WaitForSeconds(1.5f);
         }      
     }
     public IEnumerator RestItem(GameObject item){
         if(items.Count > 0){
-            for(int i =0; i < items.Count; i++){
+            for(int i = 0; i < items.Count; i++){
                 if (item == items[i]){  
-                    panelItems[i].GetComponent<Animator>().SetTrigger("Exit");
+                    // panelItems[i].GetComponent<Animator>().SetTrigger("Exit");
                     yield return new WaitForSeconds(1);      
                     items.RemoveAt(i);
                     panelItems[i].SetActive(false);
                     panelItems.RemoveAt(i);
                     timers.RemoveAt(i);
+                    break;
                 }
             }
         }     

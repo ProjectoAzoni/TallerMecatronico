@@ -10,7 +10,8 @@ public class TrashManager : MonoBehaviour
     public string [] throwPlaces;
     public string myThrowPlace;
      public string [] characteristics;
-    public string [] states = {"Grabbed","Dropped","Process"};
+     //Binned must always be the last item on the array "states"
+    public string [] states = {"Grabbed","Dropped","Process","Taken","Binned"};
     public bool show = false;
     public string currentState;
 
@@ -19,7 +20,6 @@ public class TrashManager : MonoBehaviour
     void Start()
     {
         currentState = states[1];
-
     }
 
     // Update is called once per frame

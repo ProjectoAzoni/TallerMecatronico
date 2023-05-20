@@ -633,6 +633,7 @@ MonoBehaviour:
   itemCount: 0
   minItemCount: 0
   maxItemCount: 1
+  myPublicType: 
   items: []
 --- !u!1 &1088299824
 GameObject:
@@ -1036,6 +1037,7 @@ MonoBehaviour:
   itemCount: 0
   minItemCount: 0
   maxItemCount: 1
+  myPublicType: 
   items: []
 --- !u!1 &2038238319
 GameObject:
@@ -1548,6 +1550,7 @@ MonoBehaviour:
   itemCount: 0
   minItemCount: 0
   maxItemCount: 0
+  myPublicType: 
   items: []
 --- !u!1 &1906058915374118308
 GameObject:
@@ -1843,7 +1846,7 @@ Transform:
   m_GameObject: {fileID: 2603216853230010787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 1032351600}
   m_RootOrder: 3
@@ -1874,7 +1877,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 1a3457edf522faa4c97f39180bafa0ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1923,7 +1927,7 @@ Transform:
   m_GameObject: {fileID: 3148186981393804500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 8898967878634331037}
   m_RootOrder: 3
@@ -1954,7 +1958,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 1a3457edf522faa4c97f39180bafa0ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2934,7 +2939,7 @@ Transform:
   m_GameObject: {fileID: 7187228907652980608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.099999905, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 1997791444}
   m_RootOrder: 3
@@ -2965,7 +2970,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 1a3457edf522faa4c97f39180bafa0ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

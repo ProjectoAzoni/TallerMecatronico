@@ -444,6 +444,7 @@ MonoBehaviour:
   itemCount: 0
   minItemCount: 0
   maxItemCount: 1
+  myPublicType: 
   items: []
 --- !u!208 &1188228502
 NavMeshObstacle:
@@ -649,8 +650,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2550712007970027671}
   m_LocalRotation: {x: -0.5000001, y: 0.49999985, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 103.05494, y: 103.05494, z: 103.05494}
+  m_LocalPosition: {x: 0.10726, y: -0.00000007245, z: 0.053659}
+  m_LocalScale: {x: 131.8588, y: 112.41233, z: 135.40388}
   m_Children: []
   m_Father: {fileID: 1758036804517947619}
   m_RootOrder: 4
@@ -681,7 +682,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 1a3457edf522faa4c97f39180bafa0ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
